@@ -31,6 +31,14 @@ local.properties
 *.iml
 *.hprof
 .cxx/
+.buckconfig
+.eslintrc.js
+.flowconfig
+.node-version
+.prettierrc.js
+.ruby-version
+.watchmanconfig
+
 
 # node.js
 #

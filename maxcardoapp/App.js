@@ -1,13 +1,15 @@
+
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import {
+  StyleSheet,
+} from 'react-native';
+import RootNavigation from './frontend/navigations/RootNavigation';
+
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <View>
-        <Text>Hello World</Text>
-      </View>
-    </SafeAreaView>
+    <RootNavigation />
+
   );
 };
 

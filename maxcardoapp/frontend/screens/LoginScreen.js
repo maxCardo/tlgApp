@@ -39,7 +39,7 @@ const LoginScreen = ({ navigation }) => {
       <SafeAreaView>
         <ScrollView>
           <View style={styles.container}>
-            <View style={{ alignItems: 'center', paddingVertical: 20 }}>
+            <View style={{ alignItems: 'center', paddingVertical: 50 }}>
               <Image
                 style={{ width: 160, height: 35 }}
                 source={require('../../assets/images/logo.png')}

@@ -1,15 +1,11 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import { BLACK_COLOR, BORDER_COLOR, FONT_12, FONT_14, FONT_17, PRIMARY_COLOR, SECONDARY_COLOR } from '../constant/Color';
 
-const Transaction = () => {
+const Transaction = ({ transaction }) => {
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        borderBottomWidth: 1,
-        borderColor: 'gray',
-        paddingVertical: 12,
-      }}>
+    <>
+
       <View>
         <Image
           source={require('../../assets/images/person.png')}
@@ -18,15 +14,32 @@ const Transaction = () => {
       </View>
       <View style={{ flex: 1, marginLeft: 12 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Text>Heather Watson</Text>
-          <Text>3 hours ago</Text>
+          <Text style={styles.Name}>{transaction.name}</Text>
+          <Text style={styles.Time}>3 hours ago</Text>
         </View>
-        <Text>$200</Text>
+        <Text style={styles.Price}>${transaction.price}</Text>
       </View>
-    </View>
+    </>
+
   );
 };
 
 export default Transaction;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  Name: {
+    fontSize: FONT_14,
+    color: SECONDARY_COLOR,
+    fontWeight: '400'
+  },
+  Price: {
+    fontSize: FONT_17,
+    color: BLACK_COLOR,
+    fontWeight: '500'
+  },
+  Time: {
+    fontSize: FONT_12,
+    color: PRIMARY_COLOR,
+    fontWeight: '400'
+  },
+});

@@ -17,13 +17,16 @@ const styles = StyleSheet.create({
     elevation: 8,
     backgroundColor: LIGHT_TEXT_COLOR,
     borderRadius: 4,
-    paddingVertical: 12,
+    paddingVertical: 16,
     paddingHorizontal: 12,
+    width: '100%',
+
   },
   appButtonText: {
     fontSize: 18,
     color: BLACK_COLOR,
     alignSelf: "center",
-    textTransform: 'none'
+    textTransform: 'none',
+    fontWeight: '600'
   }
 })

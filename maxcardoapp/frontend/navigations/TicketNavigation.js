@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 import TicketScreen from '../screens/TicketScreen';
 import FilterModalScreen from '../screens/FilterModalScreen';
+import TicketDetail from '../screens/TicketDetailScreen';
+import TicketDetailScreen from '../screens/TicketDetailScreen';
 const Stack = createNativeStackNavigator();
 const TicketNavigation = () => {
   return (
@@ -14,7 +16,9 @@ const TicketNavigation = () => {
       <Stack.Group>
         <Stack.Screen name="Ticket" component={TicketScreen} />
       </Stack.Group>
-
+      <Stack.Group>
+        <Stack.Screen name="TicketDetail" component={TicketDetailScreen} />
+      </Stack.Group>
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="FilterModal" component={FilterModalScreen} />
       </Stack.Group>

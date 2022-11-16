@@ -8,9 +8,10 @@ export const ICON_COLOR = 'rgb(181, 188, 194)';
 export const PRIMARY_COLOR = 'rgb(181, 188, 194)';
 export const BORDER_COLOR = 'rgb(181, 188, 194)';
 export const SECONDARY_COLOR = 'rgb(54, 58, 63)';
+export const BACKGROUND_COLOR = 'rgb( 237, 238, 240)';
 
 // FONT SIZE
-export const FONT_24 = 24;
+export const FONT_24 = 26;
 export const FONT_17 = 17;
 export const FONT_15 = 15;
 export const FONT_14 = 14;

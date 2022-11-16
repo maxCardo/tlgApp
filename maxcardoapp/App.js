@@ -1,4 +1,5 @@
 
+import { NativeBaseProvider } from 'native-base';
 import React from 'react';
 import {
   StyleSheet,
@@ -8,7 +9,9 @@ import RootNavigation from './frontend/navigations/RootNavigation';
 
 const App = () => {
   return (
-    <RootNavigation />
+    <NativeBaseProvider>
+      <RootNavigation />
+    </NativeBaseProvider>
 
   );
 };

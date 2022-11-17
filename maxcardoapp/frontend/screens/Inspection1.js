@@ -22,11 +22,7 @@ import {
   WHITE_COLOR,
 } from '../constant/Color';
 import Icon from 'react-native-vector-icons/AntDesign';
-import Message from 'react-native-vector-icons/AntDesign';
-import Envelope from 'react-native-vector-icons/EvilIcons';
-import Phone from 'react-native-vector-icons/Feather';
 import CustomButton from '../compoments/CustomButton';
-import InputField from '../compoments/InputField';
 import { useForm } from 'react-hook-form';
 import InspectionInput from '../compoments/InspectionInput';
 
@@ -49,7 +45,7 @@ const Inspection1 = ({ navigation }) => {
     //       backgroundColor: BLACK_COLOR,
     //     },
     //   });
-  }, [navigation,]);
+  }, [navigation]);
 
   const {
     control,
@@ -62,100 +58,102 @@ const Inspection1 = ({ navigation }) => {
     navigation.push('Inspection2');
   };
   return (
-    <View style={styles.container}>
-      <StatusBar
-        translucent
-        backgroundColor={SECONDARY_COLOR}
-        barStyle="light-content"
-      />
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={[styles.topSection]}>
-          <View style={{ paddingHorizontal: 40 }}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}>
-              <View>
-                <Pressable onPress={() => navigation.goBack()}>
-                  <Icon name="left" size={24} color={WHITE_COLOR} />
-                </Pressable>
+    <>
+      <View style={styles.container}>
+        <StatusBar
+          translucent
+          backgroundColor={SECONDARY_COLOR}
+          barStyle="light-content"
+        />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={[styles.topSection]}>
+            <View style={{ paddingHorizontal: 40 }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <View>
+                  <Pressable onPress={() => navigation.goBack()}>
+                    <Icon name="left" size={24} color={WHITE_COLOR} />
+                  </Pressable>
+                </View>
+                <View>
+                  <Image
+                    source={require('../../assets/images/person.png')}
+                    alt="tab icon"
+                  />
+                </View>
               </View>
-              <View>
-                <Image
-                  source={require('../../assets/images/person.png')}
-                  alt="tab icon"
-                />
-              </View>
-            </View>
 
-            <View style={{ marginBottom: 40 }}>
-              <Text style={styles.Wellcome}>Move Out Inspection</Text>
-              <Text style={styles.subHeading}>
-                Make sure each item inside the entry area has been inspected
-                thoroughly. Leave comments for all defects.
-              </Text>
-            </View>
-          </View>
-        </View>
-        <View style={styles.main}>
-          <View style={{ paddingHorizontal: 40, marginTop: 20 }}>
-            <View>
-              <View style={{ marginVertical: 10 }}>
-                <InspectionInput
-                  name="email"
-                  control={control}
-                  placeholder="Your email"
-                  label="Email"
-                  subLabel=""
-                  keyboardType="email-address"
-                  rules={{
-                    required: 'Email is required.',
-                    pattern: {
-                      value:
-                        /^\s*(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))\s*$/,
-                      message: 'Invalid email address',
-                    },
-                  }}
-                />
-              </View>
-              <View style={{ marginVertical: 15 }}>
-                <InspectionInput
-                  name="rmnumber"
-                  control={control}
-                  placeholder="RM Issue Number"
-                  keyboardType="numeric"
-                  label="RM Issue Number"
-                  subLabel="Place RM Issue number above. Use 100 to open a new work order in the system"
-                  rules={{
-                    required: 'RM Issue Number  is required.',
-                  }}
-                />
-              </View>
-              <View style={{ marginVertical: 15 }}>
-                <InspectionInput
-                  name="tech"
-                  control={control}
-                  placeholder="Enter tech"
-                  label="Tech"
-                  subLabel=""
-                  rules={{
-                    required: 'Tech  is required.',
-                  }}
-                />
-              </View>
-            </View>
-
-            <View style={{ marginTop: 50 }}>
-              <CustomButton onPress={handleSubmit(submit)} title="Continue" />
-              <View style={{ alignItems: 'center', marginVertical: 16 }}>
-                <Text style={styles.page}>Page 1 of 6</Text>
+              <View style={{ marginBottom: 40 }}>
+                <Text style={styles.Wellcome}>Move Out Inspection</Text>
+                <Text style={styles.subHeading}>
+                  Make sure each item inside the entry area has been inspected
+                  thoroughly. Leave comments for all defects.
+                </Text>
               </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
-    </View>
+          <View style={styles.main}>
+            <View style={{ paddingHorizontal: 40, marginTop: 20 }}>
+              <View>
+                <View style={{ marginVertical: 10 }}>
+                  <InspectionInput
+                    name="email"
+                    control={control}
+                    placeholder="Your email"
+                    label="Email"
+                    subLabel=""
+                    keyboardType="email-address"
+                    rules={{
+                      required: 'Email is required.',
+                      pattern: {
+                        value:
+                          /^\s*(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))\s*$/,
+                        message: 'Invalid email address',
+                      },
+                    }}
+                  />
+                </View>
+                <View style={{ marginVertical: 15 }}>
+                  <InspectionInput
+                    name="rmnumber"
+                    control={control}
+                    placeholder="RM Issue Number"
+                    keyboardType="numeric"
+                    label="RM Issue Number"
+                    subLabel="Place RM Issue number above. Use 100 to open a new work order in the system"
+                    rules={{
+                      required: 'RM Issue Number  is required.',
+                    }}
+                  />
+                </View>
+                <View style={{ marginVertical: 15 }}>
+                  <InspectionInput
+                    name="tech"
+                    control={control}
+                    placeholder="Enter tech"
+                    label="Tech"
+                    subLabel=""
+                    rules={{
+                      required: 'Tech  is required.',
+                    }}
+                  />
+                </View>
+              </View>
+
+              <View style={{ marginTop: 50 }}>
+                <CustomButton onPress={handleSubmit(submit)} title="Continue" />
+                <View style={{ alignItems: 'center', marginVertical: 16 }}>
+                  <Text style={styles.page}>Page 1 of 6</Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </ScrollView>
+      </View>
+    </>
   );
 };
 
@@ -188,6 +186,7 @@ const styles = StyleSheet.create({
     fontSize: FONT_24,
     color: WHITE_COLOR,
     marginBottom: 10,
+    paddingTop: 10,
   },
   subHeading: {
     color: PRIMARY_COLOR,

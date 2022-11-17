@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Input, Button, } from "native-base";
 import Calendar from 'react-native-vector-icons/AntDesign';
-import { BLACK_COLOR, SECONDARY_COLOR, WHITE_COLOR } from '../constant/Color';
+import { BLACK_COLOR, BORDER_COLOR, SECONDARY_COLOR, WHITE_COLOR } from '../constant/Color';
 import moment from 'moment';
 
-const Datepicker = () => {
+const Datepicker = ({ title, subLabel }) => {
   const [date, setDate] = useState(new Date());
   const [newDate, setNewDate] = useState();
   const [mode, setMode] = useState('date');
@@ -31,9 +31,10 @@ const Datepicker = () => {
   };
 
   return (
-    <View>
-
-      <Input isDisabled={true} w="100%" py="0" fontSize={16} color={SECONDARY_COLOR} InputRightElement={<Button w="1/6" height={50} bgColor={WHITE_COLOR} onPress={showDatepicker}>
+    <View style={{ marginVertical: 15 }}>
+      <Text style={styles.label}>{title}{" "}</Text>
+      <Text style={styles.sublabel}>{subLabel}{" "}</Text>
+      <Input isDisabled={true} w="100%" py="0" fontSize={16} color={SECONDARY_COLOR} borderColor={BORDER_COLOR} InputRightElement={<Button w="1/6" height={50} bgColor={WHITE_COLOR} onPress={showDatepicker}>
         <Calendar name="calendar" size={24} color={BLACK_COLOR} />
       </Button>} placeholder="dd/mm/yyyy" value={moment(date).format('l')} />
       {show && (
@@ -51,4 +52,18 @@ const Datepicker = () => {
 
 export default Datepicker
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  label: {
+    color: BLACK_COLOR,
+    fontSize: 15,
+    marginBottom: 10,
+    fontWeight: '500'
+  },
+  sublabel: {
+    color: SECONDARY_COLOR,
+    fontSize: 14,
+    marginBottom: 8,
+    fontWeight: '400',
+    lineHeight: 18
+  },
+})

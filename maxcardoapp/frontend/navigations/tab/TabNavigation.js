@@ -14,7 +14,8 @@ import HomeNavigation from '../HomeNavigation';
 import ProfileNavigation from '../ProfileNavigation';
 import NotificationNavigation from '../NotificationNavigation';
 import TicketNavigation from '../TicketNavigation';
-const TabNavigation = () => {
+const TabNavigation = (props) => {
+  console.log({ props }, "TabNavigation")
   const Tabs = createBottomTabNavigator();
   const HomeStack = createNativeStackNavigator();
   const ProfileStack = createNativeStackNavigator();
@@ -37,6 +38,7 @@ const TabNavigation = () => {
       }}>
       <Tabs.Screen
         name="HomeScreens"
+        initialParams={{ userData: props.userData, setUserData: props.setUserData }}
         component={HomeNavigation}
         options={{
           tabBarShowLabel: false,

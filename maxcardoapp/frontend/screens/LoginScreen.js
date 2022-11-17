@@ -16,24 +16,29 @@ import InputField from '../compoments/InputField';
 import { useForm, Controller } from 'react-hook-form';
 import CustomButton from '../compoments/CustomButton';
 import { LIGHT_TEXT_COLOR, WHITE_COLOR } from '../constant/Color';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const windowHeight = Dimensions.get('window').height;
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = (props) => {
+  const { navigation, route: { params } } = props
+  console.log({ props }, "LoginScreen")
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      username: '',
-      password: ''
-    }
-  });
+  } = useForm();
 
-  const submit = data => {
+  const submit = async data => {
     console.log(data);
-    alert('Successfully logged in')
-  };
+    try {
+      const userData = JSON.stringify(data);
+      await AsyncStorage.setItem('userData', userData);
+      params.setUserData(data)
+      console.log("success")
+    } catch (e) {
+      console.log({ e });
+    }
 
+  };
   return (
     <BackgroundImage>
       <SafeAreaView>
@@ -90,7 +95,7 @@ const LoginScreen = ({ navigation }) => {
                     textAlign: 'center',
                     flexDirection: 'row',
                     justifyContent: 'center',
-                    marginBottom: 20
+                    marginBottom: 20,
                   }}>
                   <Text style={styles.member}>Not a member?</Text>
                   <Pressable onPress={() => navigation.navigate('Register')}>

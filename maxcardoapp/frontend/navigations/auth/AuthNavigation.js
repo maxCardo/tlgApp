@@ -9,7 +9,8 @@ import ResetScreen from '../../screens/ResetScreen';
 import OnboardScreen from '../../screens/OnboardScreen';
 
 const Stack = createNativeStackNavigator();
-const AuthNavigation = () => {
+const AuthNavigation = (props) => {
+  console.log({ props })
   return (
 
     <Stack.Navigator>
@@ -18,11 +19,13 @@ const AuthNavigation = () => {
           name="Onboarding"
           component={OnboardScreen}
           options={{ headerShown: false }}
+          initialParams={{ ...props }}
         />
         <Stack.Screen
           name="Login"
           component={LoginScreen}
           options={{ headerShown: false }}
+          initialParams={{ ...props }}
         />
         <Stack.Screen
           name="Register"

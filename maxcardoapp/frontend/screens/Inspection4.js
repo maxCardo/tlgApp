@@ -8,7 +8,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BACKGROUND_COLOR,
   BLACK_COLOR,
@@ -22,16 +22,15 @@ import {
   WHITE_COLOR,
 } from '../constant/Color';
 import Icon from 'react-native-vector-icons/AntDesign';
-import Message from 'react-native-vector-icons/AntDesign';
-import Envelope from 'react-native-vector-icons/EvilIcons';
-import Phone from 'react-native-vector-icons/Feather';
-import CustomButton from '../compoments/CustomButton';
-import InputField from '../compoments/InputField';
+import Attachment from 'react-native-vector-icons/Entypo';
 import { useForm } from 'react-hook-form';
 import InspectionInput from '../compoments/InspectionInput';
 import NextPrevButton from '../compoments/NextPrevButton';
+import * as ImagePicker from 'react-native-image-picker';
 
 const Inspection4 = ({ navigation }) => {
+  const [selectedArt, setSelectedArt] = useState({});
+  const [imageURL, setImageURL] = useState();
   useEffect(() => {
     navigation.getParent()?.setOptions({
       tabBarStyle: {
@@ -54,7 +53,19 @@ const Inspection4 = ({ navigation }) => {
   const submitNext = data => {
     navigation.push('Inspection5');
   };
+  const options = {
+    saveToPhotos: true,
+    mediaType: 'photo',
+    includeBase64: true,
+    includeExtra: true,
+  };
 
+  const openGallery = React.useCallback(() => {
+    ImagePicker.launchImageLibrary(options, setSelectedArt).then(res => {
+      console.log(res);
+      setImageURL(res.assets[0].base64);
+    });
+  }, []);
   return (
     <View style={styles.container}>
       <StatusBar
@@ -133,16 +144,48 @@ const Inspection4 = ({ navigation }) => {
                 Attached Doc or Pic
               </Text>
               <View style={{ flexDirection: 'row' }}>
-                <Image
-                  style={{ width: 130, height: 80, marginRight: 10 }}
-                  source={require('../../assets/images/image.png')}
-                  alt="tab icon"
-                />
-                <Image
-                  style={{ width: 130, height: 80 }}
-                  source={require('../../assets/images/image.png')}
-                  alt="tab icon"
-                />
+                <Pressable onPress={() => openGallery()}>
+                  <View
+                    style={{
+                      width: 130,
+                      height: 80,
+                      marginRight: 10,
+                      borderRadius: 10,
+                      backgroundColor: PRIMARY_COLOR,
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <Attachment
+                      name="attachment"
+                      size={16}
+                      color={BLACK_COLOR}
+                    />
+
+                    <Text
+                      style={{
+                        color: BLACK_COLOR,
+                        fontSize: FONT_15,
+                        marginHorizontal: 5,
+                      }}>
+                      Attach file
+                    </Text>
+                  </View>
+                </Pressable>
+                {Object.keys(selectedArt).length > 0 &&
+                  selectedArt.assets && (
+                    <Image
+                      style={{
+                        width: 130,
+                        height: 80,
+                        borderRadius: 10,
+                        overflow: 'hidden',
+                      }}
+                      resizeMode="cover"
+                      source={{ uri: `${selectedArt.assets[0].uri}` }}
+                      alt="image"
+                    />
+                  )}
               </View>
             </View>
             <View style={{ marginTop: 40, marginBottom: 20 }}>
@@ -198,6 +241,7 @@ const styles = StyleSheet.create({
     fontSize: FONT_24,
     color: WHITE_COLOR,
     marginBottom: 10,
+    paddingTop: 10,
   },
   subHeading: {
     color: PRIMARY_COLOR,

@@ -33,13 +33,13 @@ const TicketScreen = ({ navigation }) => {
   ]);
   const TicketLength = ticket.length - 1;
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
-        <StatusBar
-          translucent
-          backgroundColor="transparent"
-          barStyle="dark-content"
-        />
+    <View style={styles.container}>
+      <StatusBar
+        translucent
+        backgroundColor="transparent"
+        barStyle="dark-content"
+      />
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ marginTop: 20, marginBottom: 130 }}>
           <View
             style={{
@@ -94,8 +94,8 @@ const TicketScreen = ({ navigation }) => {
           })}
 
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 

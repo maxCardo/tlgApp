@@ -98,7 +98,7 @@ const TicketDetailScreen = ({ navigation }) => {
                 <CustomButton title="Close" />
               </View>
               <View style={styles.contactUsbtn}>
-                <CustomButton title="Update" />
+                <CustomButton title="Update" onPress={() => navigation.push('UpdateTicket')} />
               </View>
               <View style={styles.contactUsbtn}>
                 <CustomButton title="Delete" />

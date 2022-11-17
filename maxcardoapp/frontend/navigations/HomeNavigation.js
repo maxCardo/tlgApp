@@ -3,13 +3,14 @@ import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 const Stack = createNativeStackNavigator();
-const HomeNavigation = () => {
+const HomeNavigation = (props) => {
+  console.log({ props }, "HomeNavigation Single")
   return (
     <Stack.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
       })}>
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Home" component={HomeScreen} initialParams={{ ...props.route.params }} />
     </Stack.Navigator>
   );
 };

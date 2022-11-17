@@ -13,6 +13,7 @@ import {
   BACKGROUND_COLOR,
   BLACK_COLOR,
   BORDER_COLOR,
+  ERROR_COLOR,
   FONT_14,
   FONT_15,
   FONT_24,
@@ -42,7 +43,7 @@ const Inspection5 = ({ navigation }) => {
       },
     });
 
-  }, [navigation,]);
+  }, [navigation]);
 
   const {
     control,
@@ -123,6 +124,7 @@ const Inspection5 = ({ navigation }) => {
                 />
               </View>
               <View style={{ marginVertical: 15 }}>
+                <Text style={styles.label}>Method Of Purchase </Text>
                 <Select borderColor={BORDER_COLOR}
                   height={50}
                   borderRadius={4} selectedValue={service} accessibilityLabel="Choose Service" placeholder="Choose" _selectedItem={{
@@ -170,6 +172,12 @@ const styles = StyleSheet.create({
     backgroundColor: SECONDARY_COLOR,
     paddingTop: 20,
   },
+  label: {
+    color: BLACK_COLOR,
+    fontSize: 15,
+    marginBottom: 10,
+    fontWeight: '500'
+  },
   centerIcon: {
     width: '33%',
     borderRightWidth: 0.3,
@@ -185,6 +193,7 @@ const styles = StyleSheet.create({
     fontSize: FONT_24,
     color: WHITE_COLOR,
     marginBottom: 10,
+    paddingTop: 10,
   },
   subHeading: {
     color: PRIMARY_COLOR,

@@ -44,7 +44,7 @@ const Inspection6 = ({ navigation }) => {
       },
     });
 
-  }, [navigation,]);
+  }, [navigation]);
 
   const {
     control,
@@ -54,7 +54,7 @@ const Inspection6 = ({ navigation }) => {
 
 
   const submitPrev = data => {
-    navigation.push('Inspection4');
+    navigation.push('Inspection5');
   };
   const submitNext = data => {
     console.log(data)
@@ -97,9 +97,8 @@ const Inspection6 = ({ navigation }) => {
         </View>
         <View style={styles.main}>
           <View style={{ paddingHorizontal: 40, marginTop: 20 }}>
-            <Text style={styles.label}>Update Date{" "}</Text>
-            <Text style={styles.sublabel}>Date{" "}</Text>
-            <Datepicker />
+
+            <Datepicker title="Update Date" subLabel='Date' />
 
             <View style={{ marginTop: 40, marginBottom: 20 }}>
               <NextPrevButton
@@ -129,19 +128,7 @@ const styles = StyleSheet.create({
     backgroundColor: WHITE_COLOR,
     paddingTop: Platform.OS == 'ios' ? 0 : 35,
   },
-  label: {
-    color: BLACK_COLOR,
-    fontSize: 15,
-    marginBottom: 10,
-    fontWeight: '500'
-  },
-  sublabel: {
-    color: SECONDARY_COLOR,
-    fontSize: 14,
-    marginBottom: 8,
-    fontWeight: '400',
-    lineHeight: 18
-  },
+
   topSection: {
     backgroundColor: SECONDARY_COLOR,
     paddingTop: 20,
@@ -161,6 +148,7 @@ const styles = StyleSheet.create({
     fontSize: FONT_24,
     color: WHITE_COLOR,
     marginBottom: 10,
+    paddingTop: 10,
   },
   subHeading: {
     color: PRIMARY_COLOR,

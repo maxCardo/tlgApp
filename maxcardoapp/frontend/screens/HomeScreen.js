@@ -10,7 +10,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BLACK_COLOR,
   BORDER_COLOR,
@@ -26,10 +26,17 @@ import InputField from '../compoments/InputField';
 import { useForm } from 'react-hook-form';
 import Transaction from '../compoments/Transaction';
 import Icon from 'react-native-vector-icons/AntDesign';
+import CustomStatusbar from '../compoments/CustomStatusbar';
+import CustomButton from '../compoments/CustomButton';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = (props) => {
+  console.log({ props }, "HomeScreen")
+  const { navigation, route: { params } } = props
+  console.log(navigation)
   const [text, onChangeText] = React.useState('Useless Text');
   const [number, onChangeNumber] = React.useState(null);
+
 
   const [transection, setTransection] = useState([
     { id: 1, name: 'Heather Watson', price: 200 },
@@ -39,15 +46,16 @@ const HomeScreen = ({ navigation }) => {
     { id: 5, name: 'Heather Watson', price: 30 },
   ]);
   const length = transection.length - 1;
+  const logout = async (states) => {
+    await AsyncStorage.removeItem('userData')
+    states.setUserData(null)
+
+  }
   return (
     <>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
-          <StatusBar
-            translucent
-            backgroundColor="transparent"
-            barStyle="dark-content"
-          />
+      <View style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <CustomStatusbar bgColor={'#fff'} theme="dark-content" />
           <View style={{ marginTop: 20, marginBottom: 130 }}>
             <View
               style={{
@@ -66,6 +74,10 @@ const HomeScreen = ({ navigation }) => {
                 />
               </View>
             </View>
+            <View style={{ marginBottom: 20 }}>
+              <CustomButton onPress={() => logout(params)} title="Log out" />
+            </View>
+
             <View style={{ position: 'relative', marginBottom: 20 }}>
               <View style={{ position: 'absolute', top: 16, left: 16 }}>
                 <Icon name="search1" size={20} color={PRIMARY_COLOR} />
@@ -111,8 +123,8 @@ const HomeScreen = ({ navigation }) => {
               );
             })}
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </>
   );
 };

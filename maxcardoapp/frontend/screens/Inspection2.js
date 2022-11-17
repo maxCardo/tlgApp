@@ -171,6 +171,7 @@ const styles = StyleSheet.create({
     fontSize: FONT_24,
     color: WHITE_COLOR,
     marginBottom: 10,
+    paddingTop: 10,
   },
   subHeading: {
     color: PRIMARY_COLOR,

@@ -6,6 +6,7 @@ import TicketScreen from '../screens/TicketScreen';
 import FilterModalScreen from '../screens/FilterModalScreen';
 import TicketDetail from '../screens/TicketDetailScreen';
 import TicketDetailScreen from '../screens/TicketDetailScreen';
+import UpdateTicketScreen from '../screens/UpdateTicketScreen';
 const Stack = createNativeStackNavigator();
 const TicketNavigation = () => {
   return (
@@ -18,6 +19,7 @@ const TicketNavigation = () => {
       </Stack.Group>
       <Stack.Group>
         <Stack.Screen name="TicketDetail" component={TicketDetailScreen} />
+        <Stack.Screen name="UpdateTicket" component={UpdateTicketScreen} />
       </Stack.Group>
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="FilterModal" component={FilterModalScreen} />
